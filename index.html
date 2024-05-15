@@ -1637,9 +1637,11 @@
         if (isOpen) {
           nav.classList.add('hidden');
           icon.textContent = 'menu';
+          document.body.style.overflow = ''
         } else {
           nav.classList.remove('hidden');
           icon.textContent = 'close';
+          document.body.style.overflow = 'hidden'
         }
       }
     </script>

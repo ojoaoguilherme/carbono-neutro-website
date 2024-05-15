@@ -76,6 +76,9 @@
   .mobile-header {
     display: none;
   }
+  .mobile-header-nav {
+    display: none;
+  }
 }
 
 .border-bottom {

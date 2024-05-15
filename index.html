@@ -1619,9 +1619,99 @@
           ]);
         });
     </script>
+    <link href="/styles.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@30,400,0,0&display=block"
+    />
+    <script>
+      window.addEventListener('load', () => {
+        Array.from(document.getElementsByTagName('a'), a =>
+          a.addEventListener('click', toggleNav)
+        );
+      });
+      function toggleNav() {
+        const nav = document.getElementById('mobile_navigation');
+        const icon = document.getElementById('mobile_toggle_icon');
+        const isOpen = !nav.classList.contains('hidden');
+        if (isOpen) {
+          nav.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+          icon.textContent = 'menu';
+        } else {
+          document.body.style.overflow = 'hidden';
+          nav.classList.remove('hidden');
+          icon.textContent = 'close';
+        }
+      }
+    </script>
   </head>
 
   <body class="x x-fonts-league-spartan x-fonts-montserrat">
+    <div id="page_top" class="border-b border-gray-2">
+      <header class="desktop-header">
+        <div class="flex items-center" style="gap: 12px">
+          <a href="/" class="flex items-center justify-center">
+            <img
+              src="/assets/images/logo.png"
+              alt="Logo"
+              width="46"
+              height="46"
+            />
+          </a>
+          <h1 class="header-title">Eco Carbono Neutro</h1>
+        </div>
+
+        <nav class="flex items-center" style="gap: 20px">
+          <a href="#sobre" class="header-nav-link">Sobre o APP</a>
+          <a href="#esg" class="header-nav-link">ESG</a>
+          <a href="#cpr" class="header-nav-link">CPR Verde</a>
+          <a href="#informacoes" class="header-nav-link">Informações</a>
+          <a href="#" class="button">Baixe o APP</a>
+        </nav>
+      </header>
+
+      <!-- MOBILE -->
+      <header class="mobile-header">
+        <div
+          class="grid items-center"
+          style="grid-template-columns: auto 1fr auto; gap: 12px"
+        >
+          <a href="/" class="flex items-center justify-center">
+            <img
+              src="/assets/images/logo.png"
+              alt="Logo"
+              width="46"
+              height="46"
+            />
+          </a>
+          <h1 class="header-title text-center">Eco Carbono Neutro</h1>
+          <button
+            type="button"
+            style="
+              appearance: none;
+              border: none;
+              background: transparent;
+              cursor: pointer;
+            "
+            onclick="toggleNav()"
+          >
+            <span id="mobile_toggle_icon" class="material-symbols-outlined" style="font-size: 30px;">
+              menu
+            </span>
+          </button>
+        </div>
+      </header>
+
+      <div id="mobile_navigation" class="mobile-header-nav hidden">
+        <a href="#sobre" class="header-nav-link">Sobre o APP</a>
+        <a href="#esg" class="header-nav-link">ESG</a>
+        <a href="#cpr" class="header-nav-link">CPR Verde</a>
+        <a href="#informacoes" class="header-nav-link">Informações</a>
+        <a href="#" class="button w-full">Baixe o APP</a>
+      </div>
+    </div>
+
     <div
       id="layout-a-4-caf-3-cd-8-d-64-4-c-25-8091-b-4-e-68-aa-5-f-214"
       class="layout layout-layout layout-layout-layout-13 locale-pt-BR lang-pt"
@@ -2278,7 +2368,7 @@
                                   https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
                                 "
                                 sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                                data-srcsetlazy="/assets/images/image2.webp, /assets/images/image2.webp/:/cr=t:0%25,l:0.06%25,w:99.87%25,h:100%25/rs=w:730,h:730,cg:true 2x, /assets/images/image2.webp/:/cr=t:0%25,l:0.06%25,w:99.87%25,h:100%25/rs=w:776,h:776,cg:true 3x"
+                                data-srcsetlazy="/assets/images/image2.webp, /assets/images/image2.webp 3x"
                                 data-ux="ContentCardImageThumbnail"
                                 overlayalpha="0"
                                 data-aid="ABOUT_IMAGE_RENDERED1"
@@ -2359,14 +2449,6 @@
                                 data-lazyimg="true"
                                 data-srclazy="/assets/images/image3.webp"
                                 src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                srcset="
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                "
-                                sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
                                 data-srcsetlazy="/assets/images/image3.webp, /assets/images/image3.webp 3x"
                                 data-ux="ContentCardImageThumbnail"
                                 overlayalpha="0"
@@ -2435,7 +2517,7 @@
             </div>
           </div>
           <div
-            id="c5ada56d-24db-4d49-975d-82a8938fb8bc"
+            id="sobre"
             class="widget widget-introduction widget-introduction-introduction-2"
           >
             <div
@@ -2643,10 +2725,7 @@
               </div>
             </div>
           </div>
-          <div
-            id="f98ed7b5-5403-4e5a-bd1b-3e4c0400dc6d"
-            class="widget widget-content widget-content-content-6"
-          >
+          <div id="esg" class="widget widget-content widget-content-content-6">
             <div
               data-ux="Widget"
               role="region"
@@ -2779,15 +2858,7 @@
                               data-lazyimg="true"
                               data-srclazy="/assets/images/image5.webp"
                               src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                              srcset="
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                              "
-                              sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                              data-srcsetlazy="/assets/images/image5.webp, /assets/images/image5.webp/:/cr=t:9.55%25,l:0%25,w:100%25,h:80.9%25/rs=w:483,h:644,cg:true 2x"
+                              data-srcsetlazy="/assets/images/image5.webp, /assets/images/image5.webp 2x"
                               data-ux="Image"
                               data-aid="CONTENT_IMAGE1_RENDERED"
                               class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-8x c1-z c1-8y c1-2y c1-1h c1-b c1-c c1-8z c1-d c1-22 c1-e c1-f c1-g"
@@ -2877,10 +2948,7 @@
               </div>
             </div>
           </div>
-          <div
-            id="5f6717b3-fc0c-48e3-b7ae-2b7d1de59c04"
-            class="widget widget-content widget-content-content-6"
-          >
+          <div id="cpr" class="widget widget-content widget-content-content-6">
             <div
               data-ux="Widget"
               role="region"
@@ -3371,7 +3439,7 @@
             </div>
           </div>
           <div
-            id="bca9d842-0f4d-4e66-9faa-4bb3b291cccc"
+            id="informacoes"
             class="widget widget-content widget-content-content-2"
           >
             <div

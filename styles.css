@@ -1,0 +1,137 @@
+.desktop-header {
+  display: none;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  justify-content: space-between;
+  column-gap: 1.5rem;
+  align-items: center;
+  max-width: 1340px;
+  height: 80px;
+}
+
+.mobile-header {
+  display: grid;
+  gap: 0.75rem;
+  padding: 16px 20px;
+  height: 80px;
+}
+
+.mobile-header-nav {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 80px);
+  background: white;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 20px;
+}
+
+.header-title {
+  color: #267f5d;
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 23.7px;
+}
+
+.header-nav-link {
+  color: #267f5d;
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 23.7px;
+  text-decoration: none;
+}
+.header-nav-link:hover {
+  text-decoration: underline;
+}
+
+.button {
+  height: 40px;
+  width: 135px;
+  background-color: #267F5D;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  font-family: 'Rubik', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 1.25px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FAFAFA;
+}
+
+@media (min-width: 1024px) {
+  .desktop-header {
+    display: flex;
+  }
+  .mobile-header {
+    display: none;
+  }
+}
+
+.border-bottom {
+  border-bottom: 1px solid #ccc;
+}
+
+.border-gray {
+  border-color: #ccc;
+}
+
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-x-6 {
+  column-gap: 1.5rem;
+}
+
+.gap-y-7 {
+  row-gap: 1.75rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}

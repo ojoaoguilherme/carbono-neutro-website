@@ -1625,23 +1625,41 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@30,400,0,0&display=block"
     />
     <script>
+      function isNavOpen() {
+        const nav = document.getElementById('mobile_navigation');
+        const isOpen = !nav.classList.contains('hidden');
+        return isOpen;
+      }
       window.addEventListener('load', () => {
-        Array.from(document.getElementsByTagName('a'), a =>
-          a.addEventListener('click', toggleNav)
-        );
+        Array.from(document.getElementsByTagName('a'), a => {
+          a.addEventListener('click', () => {
+            if (isNavOpen()) {
+              closeNav()
+            }
+          });
+        });
       });
+      function closeNav() {
+        const nav = document.getElementById('mobile_navigation');
+        const icon = document.getElementById('mobile_toggle_icon');
+        nav.classList.add('hidden');
+        icon.textContent = 'menu';
+        document.body.style.overflow = '';
+      }
+      function openNav() {
+        const nav = document.getElementById('mobile_navigation');
+        const icon = document.getElementById('mobile_toggle_icon');
+        nav.classList.remove('hidden');
+        icon.textContent = 'close';
+        document.body.style.overflow = 'hidden';
+      }
       function toggleNav() {
         const nav = document.getElementById('mobile_navigation');
         const icon = document.getElementById('mobile_toggle_icon');
-        const isOpen = !nav.classList.contains('hidden');
-        if (isOpen) {
-          nav.classList.add('hidden');
-          icon.textContent = 'menu';
-          document.body.style.overflow = ''
+        if (isNavOpen()) {
+          closeNav();
         } else {
-          nav.classList.remove('hidden');
-          icon.textContent = 'close';
-          document.body.style.overflow = 'hidden'
+          openNav();
         }
       }
     </script>
@@ -1696,7 +1714,11 @@
             "
             onclick="toggleNav()"
           >
-            <span id="mobile_toggle_icon" class="material-symbols-outlined" style="font-size: 30px;">
+            <span
+              id="mobile_toggle_icon"
+              class="material-symbols-outlined"
+              style="font-size: 30px"
+            >
               menu
             </span>
           </button>
@@ -2272,15 +2294,7 @@
                                 data-lazyimg="true"
                                 data-srclazy="/assets/images/image1.webp"
                                 src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                srcset="
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                "
                                 sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                                data-srcsetlazy="/assets/images/image1.webp"
                                 data-ux="ContentCardImageThumbnail"
                                 overlayalpha="0"
                                 data-aid="ABOUT_IMAGE_RENDERED0"
@@ -2360,15 +2374,7 @@
                                 data-lazyimg="true"
                                 data-srclazy="/assets/images/image2.webp"
                                 src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                srcset="
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:365,h:365,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                "
                                 sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                                data-srcsetlazy="/assets/images/image2.webp, /assets/images/image2.webp 3x"
                                 data-ux="ContentCardImageThumbnail"
                                 overlayalpha="0"
                                 data-aid="ABOUT_IMAGE_RENDERED1"
@@ -2449,7 +2455,6 @@
                                 data-lazyimg="true"
                                 data-srclazy="/assets/images/image3.webp"
                                 src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                data-srcsetlazy="/assets/images/image3.webp, /assets/images/image3.webp 3x"
                                 data-ux="ContentCardImageThumbnail"
                                 overlayalpha="0"
                                 data-aid="ABOUT_IMAGE_RENDERED2"
@@ -2554,87 +2559,32 @@
                             ><source
                               media="(max-width: 450px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="/assets/images/image4.webp"
-                              srcset="
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:310,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:528,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1024,h:704,cg:true,m,i:true/qt=q:1/ll=n:true  1024w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1280,h:879,cg:true,m,i:true/qt=q:1/ll=n:true  1280w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1536,h:1056,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                              "
                               sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                             <source
                               media="(min-width: 451px) and (max-width: 767px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="/assets/images/image4.webp"
-                              srcset="
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:310,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:528,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1024,h:704,cg:true,m,i:true/qt=q:1/ll=n:true  1024w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1280,h:879,cg:true,m,i:true/qt=q:1/ll=n:true  1280w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1536,h:1056,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                              "
                               sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                             <source
                               media="(min-width: 768px) and (max-width: 1023px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="/assets/images/image4.webp"
-                              srcset="
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:310,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:528,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1024,h:704,cg:true,m,i:true/qt=q:1/ll=n:true  1024w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1280,h:879,cg:true,m,i:true/qt=q:1/ll=n:true  1280w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1536,h:1056,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                              "
                               sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                             <source
                               media="(min-width: 1024px) and (max-width: 1279px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="/assets/images/image4.webp"
-                              srcset="
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:310,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:528,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1024,h:704,cg:true,m,i:true/qt=q:1/ll=n:true  1024w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1280,h:879,cg:true,m,i:true/qt=q:1/ll=n:true  1280w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1536,h:1056,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                              "
                               sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                             <source
                               media="(min-width: 1280px) and (max-width: 1535px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="/assets/images/image4.webp"
-                              srcset="
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:310,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:528,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1024,h:704,cg:true,m,i:true/qt=q:1/ll=n:true  1024w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1280,h:879,cg:true,m,i:true/qt=q:1/ll=n:true  1280w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1536,h:1056,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                              "
                               sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                             <source
                               media="(min-width: 1536px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="/assets/images/image4.webp"
-                              srcset="
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:310,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:528,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1024,h:704,cg:true,m,i:true/qt=q:1/ll=n:true  1024w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1280,h:879,cg:true,m,i:true/qt=q:1/ll=n:true  1280w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1536,h:1056,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                              "
                               sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                             <img
                               data-ux="Image"
                               data-lazyimg="true"
-                              data-srclazy="/assets/images/image4.webp/:/cr=t:0%25,l:4.15%25,w:91.69%25,h:91.69%25"
+                              data-srclazy="/assets/images/image4.webp"
                               src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                              srcset="
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:310,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:528,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1024,h:704,cg:true,m,i:true/qt=q:1/ll=n:true  1024w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1280,h:879,cg:true,m,i:true/qt=q:1/ll=n:true  1280w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:1536,h:1056,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                              "
                               sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
                               data-aid="IMAGE_RENDERED"
                               class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-t c1-z c1-7x c1-1h c1-b c1-c c1-7y c1-d c1-e c1-f c1-g"
@@ -2858,7 +2808,6 @@
                               data-lazyimg="true"
                               data-srclazy="/assets/images/image5.webp"
                               src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                              data-srcsetlazy="/assets/images/image5.webp, /assets/images/image5.webp 2x"
                               data-ux="Image"
                               data-aid="CONTENT_IMAGE1_RENDERED"
                               class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-8x c1-z c1-8y c1-2y c1-1h c1-b c1-c c1-8z c1-d c1-22 c1-e c1-f c1-g"
@@ -3106,15 +3055,7 @@
                               data-lazyimg="true"
                               data-srclazy="https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/359922_O.png/:/cr=t:0%25,l:24.66%25,w:50.68%25,h:100%25/rs=w:400,h:533.3333333333334,cg:true"
                               src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                              srcset="
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:400,h:533,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                              "
                               sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                              data-srcsetlazy="/assets/images/image7.webp, https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/359922_O.png/:/cr=t:0%25,l:24.66%25,w:50.68%25,h:100%25/rs=w:800,h:1067,cg:true 2x, https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/359922_O.png/:/cr=t:0%25,l:24.66%25,w:50.68%25,h:100%25/rs=w:1200,h:1600,cg:true 3x"
                               data-ux="Image"
                               data-aid="CONTENT_IMAGE1_RENDERED"
                               class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-8x c1-z c1-8y c1-2y c1-1h c1-b c1-c c1-8z c1-d c1-22 c1-e c1-f c1-g"
@@ -3232,39 +3173,16 @@
                                 ><source
                                   media="(max-width: 450px)"
                                   data-lazyimg="true"
-                                  data-srcsetlazy="https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/sustentabilidade-ibs-BioSistemico_org_br-Jhlx.webp/:/rs=w:403,h:202,cg:true,m/cr=w:403,h:202, https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/sustentabilidade-ibs-BioSistemico_org_br-Jhlx.webp/:/rs=w:806,h:403,cg:true,m/cr=w:806,h:403 2x, https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/sustentabilidade-ibs-BioSistemico_org_br-Jhlx.webp/:/rs=w:1209,h:605,cg:true,m/cr=w:1209,h:605 3x"
-                                  srcset="
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:225,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                  "
                                   sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                                 <source
                                   media="(min-width: 451px)"
                                   data-lazyimg="true"
-                                  data-srcsetlazy="/assets/images/image8.webp, https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/sustentabilidade-ibs-BioSistemico_org_br-Jhlx.webp/:/rs=w:1200,h:600,cg:true,m/cr=w:1200,h:600 2x, https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/sustentabilidade-ibs-BioSistemico_org_br-Jhlx.webp/:/rs=w:1800,h:900,cg:true,m/cr=w:1800,h:900 3x"
-                                  srcset="
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:225,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                  "
                                   sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                                 <img
                                   data-ux="Image"
                                   data-lazyimg="true"
                                   data-srclazy="/assets/images/image8.webp"
                                   src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                  srcset="
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:225,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                  "
                                   sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
                                   data-aid="CONTENT_IMAGE1_RENDERED"
                                   class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-t c1-z c1-ac c1-1h c1-b c1-c c1-ad c1-ae c1-d c1-e c1-f c1-g" /></picture
@@ -3361,39 +3279,16 @@
                                 ><source
                                   media="(max-width: 450px)"
                                   data-lazyimg="true"
-                                  data-srcsetlazy="https://img1.wsimg.com/isteam/stock/8616/:/cr=t:12.5%25,l:0%25,w:100%25,h:75%25/rs=w:403,h:202,cg:true, https://img1.wsimg.com/isteam/stock/8616/:/cr=t:12.5%25,l:0%25,w:100%25,h:75%25/rs=w:806,h:403,cg:true 2x, https://img1.wsimg.com/isteam/stock/8616/:/cr=t:12.5%25,l:0%25,w:100%25,h:75%25/rs=w:1209,h:605,cg:true 3x"
-                                  srcset="
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:225,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                  "
                                   sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                                 <source
                                   media="(min-width: 451px)"
                                   data-lazyimg="true"
-                                  data-srcsetlazy="/assets/images/image9.webp, https://img1.wsimg.com/isteam/stock/8616/:/cr=t:12.5%25,l:0%25,w:100%25,h:75%25/rs=w:1200,h:600,cg:true 2x, https://img1.wsimg.com/isteam/stock/8616/:/cr=t:12.5%25,l:0%25,w:100%25,h:75%25/rs=w:1800,h:900,cg:true 3x"
-                                  srcset="
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:225,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                  "
                                   sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px" />
                                 <img
                                   data-ux="Image"
                                   data-lazyimg="true"
                                   data-srclazy="/assets/images/image9.webp"
                                   src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                  srcset="
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:225,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                    https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:600,h:300,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                  "
                                   sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
                                   data-aid="CONTENT_IMAGE2_RENDERED"
                                   class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-t c1-z c1-ac c1-1h c1-b c1-c c1-ad c1-ae c1-d c1-e c1-f c1-g" /></picture
@@ -3541,15 +3436,7 @@
                                 data-lazyimg="true"
                                 data-srclazy="/assets/images/image10.webp"
                                 src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                srcset="
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                "
                                 sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                                data-srcsetlazy="/assets/images/image10.webp, https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/55674420-d8d9-4f45-b915-b64ab56aa835.jpeg/:/cr=t:12.44%25,l:0%25,w:100%25,h:75.12%25/rs=w:640,h:320,cg:true 2x"
                                 data-ux="Image"
                                 data-aid="CONTENT_IMAGE1_RENDERED"
                                 class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-t c1-z c1-ac c1-1h c1-b c1-c c1-ad c1-ae c1-d c1-e c1-f c1-g"
@@ -3644,15 +3531,7 @@
                                 data-lazyimg="true"
                                 data-srclazy="/assets/images/image11.webp"
                                 src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                srcset="
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                "
                                 sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                                data-srcsetlazy="/assets/images/image11.webp, https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/529c5351adf8d7a58d0ab8a1281a8cec.jpg/:/cr=t:16.67%25,l:0%25,w:100%25,h:66.67%25/rs=w:640,h:320,cg:true 2x"
                                 data-ux="Image"
                                 data-aid="CONTENT_IMAGE2_RENDERED"
                                 class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-t c1-z c1-ac c1-1h c1-b c1-c c1-ad c1-ae c1-d c1-e c1-f c1-g"
@@ -3745,15 +3624,7 @@
                                 data-lazyimg="true"
                                 data-srclazy="/assets/images/image12.webp"
                                 src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                srcset="
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                "
                                 sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                                data-srcsetlazy="/assets/images/image12.webp, https://img1.wsimg.com/isteam/ip/a4caf3cd-8d64-4c25-8091-b4e68aa5f214/dcomercio-sustentabilidade-reflorestamento-pla.jpg/:/cr=t:11.4%25,l:0%25,w:100%25,h:77.19%25/rs=w:775,h:388,cg:true 2x"
                                 data-ux="Image"
                                 data-aid="CONTENT_IMAGE3_RENDERED"
                                 class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-t c1-z c1-ac c1-1h c1-b c1-c c1-ad c1-ae c1-d c1-e c1-f c1-g"
@@ -3856,15 +3727,7 @@
                                 data-lazyimg="true"
                                 data-srclazy="/assets/images/image13.webp"
                                 src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                srcset="
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true  451w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true  768w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1024w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1280w,
-                                  https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
-                                "
                                 sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                                data-srcsetlazy="/assets/images/image13.webp, https://img1.wsimg.com/isteam/stock/kaeNjq2/:/cr=t:12.47%25,l:0%25,w:100%25,h:75.06%25/rs=w:776,h:388,cg:true 2x, https://img1.wsimg.com/isteam/stock/kaeNjq2/:/cr=t:12.47%25,l:0%25,w:100%25,h:75.06%25/rs=w:1164,h:582,cg:true 3x"
                                 data-ux="Image"
                                 class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-t c1-z c1-ac c1-1h c1-b c1-c c1-ad c1-ae c1-d c1-e c1-f c1-g"
                             /></span>
@@ -3974,7 +3837,6 @@
                                   https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
                                 "
                                 sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                                data-srcsetlazy="/assets/images/image14.webp, https://img1.wsimg.com/isteam/stock/YO261n9/:/cr=t:12.5%25,l:0%25,w:100%25,h:75%25/rs=w:776,h:388,cg:true 2x, https://img1.wsimg.com/isteam/stock/YO261n9/:/cr=t:12.5%25,l:0%25,w:100%25,h:75%25/rs=w:1164,h:582,cg:true 3x"
                                 data-ux="Image"
                                 class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-t c1-z c1-ac c1-1h c1-b c1-c c1-ad c1-ae c1-d c1-e c1-f c1-g"
                             /></span>
@@ -4089,7 +3951,6 @@
                                   https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:388,h:194,cg:true,m,i:true/qt=q:1/ll=n:true 1536w
                                 "
                                 sizes="(min-width: 451px) and (max-width: 767px) 767px, (min-width: 768px) and (max-width: 1023px) 1023px, (min-width: 1024px) and (max-width: 1279px) 1279px, (min-width: 1280px) and (max-width: 1535px) 1535px, (min-width: 1536px) 1536px"
-                                data-srcsetlazy="/assets/images/image13.webp, https://img1.wsimg.com/isteam/stock/kaeNjq2/:/cr=t:12.47%25,l:0%25,w:100%25,h:75.06%25/rs=w:776,h:388,cg:true 2x, https://img1.wsimg.com/isteam/stock/kaeNjq2/:/cr=t:12.47%25,l:0%25,w:100%25,h:75.06%25/rs=w:1164,h:582,cg:true 3x"
                                 data-ux="Image"
                                 class="x-el x-el-img c1-1 c1-2 c1-4 c1-y c1-u c1-s c1-r c1-t c1-z c1-ac c1-1h c1-b c1-c c1-ad c1-ae c1-d c1-e c1-f c1-g"
                             /></span>
@@ -4179,7 +4040,6 @@
                             ><source
                               media="(max-width: 450px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:403,h:270, https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:806,h:540 2x, https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:1209,h:809 3x"
                               srcset="
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:301,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:514,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
@@ -4191,7 +4051,6 @@
                             <source
                               media="(min-width: 451px) and (max-width: 767px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:719,h:481, https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:1438,h:963 2x"
                               srcset="
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:301,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:514,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
@@ -4203,7 +4062,6 @@
                             <source
                               media="(min-width: 768px) and (max-width: 1023px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:1023,h:685, https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:2046,h:1370 2x"
                               srcset="
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:301,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:514,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
@@ -4215,7 +4073,6 @@
                             <source
                               media="(min-width: 1024px) and (max-width: 1279px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="/assets/images/image15.webp, https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:1968,h:1317 2x"
                               srcset="
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:301,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:514,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
@@ -4227,7 +4084,6 @@
                             <source
                               media="(min-width: 1280px) and (max-width: 1535px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:1160,h:777"
                               srcset="
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:301,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:514,cg:true,m,i:true/qt=q:1/ll=n:true    768w,
@@ -4239,7 +4095,6 @@
                             <source
                               media="(min-width: 1536px)"
                               data-lazyimg="true"
-                              data-srcsetlazy="https://img1.wsimg.com/isteam/stock/8617/:/cr=t:7.9%25,l:0%25,w:100%25,h:84.19%25/rs=w:1280,h:857"
                               srcset="
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:451,h:301,cg:true,m,i:true/qt=q:1/ll=n:true    451w,
                                 https://img1.wsimg.com/isteam/ip/static/transparent_placeholder.png/:/rs=w:768,h:514,cg:true,m,i:true/qt=q:1/ll=n:true    768w,

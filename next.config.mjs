@@ -4,9 +4,9 @@ const nextConfig = {
   distDir: './dist', // Changes the build output directory to `./dist/`.
 
   i18n: {
-    locales: ['en', 'pt'],
-    defaultLocale: 'pt'
-  }
-}
- 
-export default nextConfig
+    defaultLocale: 'pt',
+    locales: ['pt', 'en'],
+  },
+};
+
+export default nextConfig;
